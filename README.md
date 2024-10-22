@@ -4,7 +4,7 @@
 ## Preview
 > Available Role : admin and user
 
-![Image of Login_Page](https://github.com/Awanprasetya/sistem-hrd-ci3/LoginPage.png)
+![Image of Login_Page](https://github.com/Awanprasetya/sistem-hrd-ci3/blob/master/LoginPage.png)
 
 > Different view and menu based on role (./app_template)
 ![Image of Admin_Page](https://github.com/hanifnoerr/codeigniter_bootstrap_login/blob/master/data/page_admin.png)
