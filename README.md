@@ -19,5 +19,5 @@
    
 ## Credits
 1. [CodeIgniter 3.1.11](https://codeigniter.com/)
-2. Login Page - [Floating labels](https://getbootstrap.com/docs/4.5/examples/floating-labels/)
+2. Login Page - [Floating labels](https://drive.google.com/file/d/18E8b8pRrm80k3M5sqirA5lYOsODk-KOm/view?usp=drive_link)
 3. Admin Theme - [SB Admin 2](https://startbootstrap.com/themes/sb-admin-2/)
