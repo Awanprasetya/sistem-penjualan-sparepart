@@ -7,8 +7,8 @@
 ![Image of Login_Page](https://github.com/Awanprasetya/sistem-hrd-ci3/blob/master/LoginPage.png)
 
 > Different view and menu based on role (./app_template)
-![Image of Dashboard Page](https://github.com/hanifnoerr/codeigniter_bootstrap_login/blob/master/dashboard.png)
-![Image of Payroll_Page](https://github.com/hanifnoerr/codeigniter_bootstrap_login/blob/master/payroll.png)
+![Image of Dashboard Page](https://github.com/Awanprasetya/sistem-hrd-ci3/blob/master/dashboard.png)
+![Image of Payroll_Page](https://github.com/Awanprasetya/sistem-hrd-ci3/blob/master/payroll.png)
 
 ## How to use
 1. rename this as app_template
