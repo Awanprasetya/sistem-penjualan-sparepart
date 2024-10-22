@@ -1,5 +1,4 @@
-# CodeIgniter + Bootstrap Login Template
- Multi Level User Login using CodeIgniter and Bootstrap
+# Aplikasi HRMS berbasis Web CI3
  
 ## Preview
 > Available Role : admin and user
