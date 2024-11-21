@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>APP NAME</title>
+  <title>Sistem Penjuala Sparepart</title>
   <!-- Custom fonts for this template-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="shortcut icon" href="<?php echo base_url('assets/foto/favicon.ico'); ?>" type="image/x-icon">
@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url('assets/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/styling.css'); ?>" rel="stylesheet">
  <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -65,9 +66,7 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                           <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Menu</h6>
-                            <a class="collapse-item" href="' . base_url() . 'c_presensi">Data Presensi</a>
-                            <a class="collapse-item" href="' . base_url() . 'c_karyawan">Data Karyawan</a>
-                            <a class="collapse-item" href="' . base_url() . 'c_shift">Atur Shift Karyawan</a>
+                            <a class="collapse-item" href="' . base_url() . 'c_penjualan">Data Penjualan</a>
                           </div>
                         </div>
                       </li>';
@@ -85,9 +84,6 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                       <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu</h6>
-                        <a class="collapse-item" href="' . base_url() . 'c_presensi">Data Presensi</a>
-                        <a class="collapse-item" href="' . base_url() . 'c_karyawan">Data Karyawan</a>
-                        <a class="collapse-item" href="' . base_url() . 'c_shift">Atur Shift Karyawan</a>
                       </div>
                     </div>
                   </li>';
@@ -118,11 +114,7 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">' . $this->session->userdata('role') . ' Menu</h6>
-                                <a class="collapse-item" href="' . base_url() . 'c_department">Data Department</a>
-                                <a class="collapse-item" href="' . base_url() . 'c_jabatan">Data Jabatan</a>
-                                <a class="collapse-item" href="' . base_url() . 'c_master_shift">Data Shift</a>
-                                <!-- <a class="collapse-item" href="' . base_url() . 'c_tunjangan">Data Tunjangan</a>
-                                <a class="collapse-item" href="' . base_url() . 'c_potongan">Data Potongan</a> -->
+                                <a class="collapse-item" href="' . base_url() . 'c_barang">Data Barang</a>
                             </div>
                         </div>
                       </li>';
@@ -224,15 +216,11 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nm_karyawan'); ?></span>
-                <img class="img-profile rounded-circle" src="<?php echo base_url('assets/foto/'.$this->session->userdata('photo_path')); ?>">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b><?php echo $this->session->userdata('username'); ?></b></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo base_url().'c_karyawan/v_detail/'. $this->session->userdata('no_finger'); ?>">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Edit Profile
-                </a>
+               
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

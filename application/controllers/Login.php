@@ -2,48 +2,75 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-	function __construct()
-	{
-		parent::__construct();		
-		$this->load->model('M_login');
-	}
+    
+    function __construct() {
+        parent::__construct();        
+        $this->load->model('M_login');
+        $this->load->library('form_validation');
+    }
 
-	function index(){
-		$this->load->view('login');
-	}
- 
-	function masuk(){
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$where = array(
-			'username' => $username,
-			'password' => md5($password)
-			);
-		$lihat = $this->M_login->status("v_user_login",$where);
-		if($lihat->num_rows() > 0){
-			foreach ($lihat->result() as $xx) {
-                    $sess_data['username'] = $xx->username;
-					$sess_data['nm_karyawan'] = $xx->nm_karyawan;
-					$sess_data['no_finger'] = $xx->no_finger;
-                    $sess_data['role'] = $xx->role;
-					$sess_data['photo_path'] = $xx->photo_path;
-					$sess_data['status'] = "1";
-					$this->session->sess_regenerate();
-                    $this->session->set_userdata($sess_data);
-                }
-				$this->session->set_flashdata('alert_1', '<div class="alert alert-success alert-dismissible" role="alert">Selamat <b>'.$xx->username.'</b>, Anda Berhasil Masuk Kedalam Sistem Bank Sampah <i class="fa fa-check"></i></div>');
+    public function index() {
+        // Cek apakah pengguna sudah login
+        if ($this->session->userdata('username')) {
+            redirect('dashboard'); // Redirect ke dashboard jika sudah login
+        }
+        $this->load->view('login'); // Tampilkan halaman login
+    }
 
-			redirect(base_url("dashboard"));
- 
-		}else{
-            $this->session->set_flashdata('error', 'Akun Non-Aktif atau Username & Password Salah');
-			redirect(base_url('Login'));
-		}
-	}
- 
-	function logout(){
-		$this->session->sess_destroy();
-		redirect(base_url('Login'));
-	}
-	
+    public function authenticate() {
+        // Validasi input
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+
+        if ($this->form_validation->run() == FALSE) {
+            // Jika validasi gagal, kembalikan ke halaman login
+            $this->session->set_flashdata('error', 'Username dan Password wajib diisi.');
+            redirect('login');
+        } else {
+            $username = $this->input->post('username', TRUE);
+            $password = $this->input->post('password', TRUE);
+
+            // Ambil data pengguna dari database
+            $user = $this->M_login->get_user_by_username($username);
+			if ($user) {
+				log_message('info', 'User ditemukan: ' . json_encode($user));
+			} else {
+				log_message('info', 'User tidak ditemukan.');
+			}
+
+
+            if ($user && (password_verify($password, $user->password) || $user->password == md5($password))) {
+                // Regenerasi sesi untuk keamanan
+                session_regenerate_id();
+
+                // Set data sesi
+                $sess_data = [
+                    'username' => $user->username,
+                    'role'     => $user->role,
+                    'status'   => "1"
+                ];
+                $this->session->set_userdata($sess_data);
+
+                // Set flashdata untuk pesan sukses
+                $this->session->set_flashdata('alert_1', 
+                    '<div class="alert alert-success alert-dismissible" role="alert">
+                        Selamat <b>' . htmlspecialchars($user->username) . '</b>, Anda Berhasil Masuk Kedalam Sistem Bank Sampah
+                        <i class="fa fa-check"></i>
+                    </div>'
+                );
+
+                redirect('dashboard'); // Redirect ke dashboard
+            } else {
+                // Jika login gagal
+                $this->session->set_flashdata('error', 'Username atau Password salah.');
+                redirect('login');
+            }
+        }
+    }
+
+    public function logout() {
+        // Hancurkan sesi dan redirect ke halaman login
+        $this->session->sess_destroy();
+        redirect('login');
+    }
 }

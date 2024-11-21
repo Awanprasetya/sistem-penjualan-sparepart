@@ -41,10 +41,10 @@
     <!-- Data Karyawan Menu -->
     <div class="col-xl-2 col-md-4 col-sm-6 mb-1">
       <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #36d1dc, #5b86e5);">
-        <a href="<?php echo base_url().'c_karyawan/'; ?>" class="text-decoration-none text-white">
+        <a href="<?php echo base_url().'c_barang/'; ?>" class="text-decoration-none text-white">
           <div class="card-body">
-            <i class="fas fa-user-tie fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">Data Karyawan</h6>
+            <i class="fa fa-archive fa-2x mb-2"></i>
+            <h6 class="font-weight-bold">Data Barang</h6>
           </div>
         </a>
       </div>
@@ -53,184 +53,17 @@
     <!-- Presensi Menu -->
     <div class="col-xl-2 col-md-4 col-sm-6 mb-1">
       <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
-        <a href="<?php echo base_url().'c_presensi/'; ?>" class="text-decoration-none text-white">
+        <a href="<?php echo base_url().'c_penjualan/'; ?>" class="text-decoration-none text-white">
           <div class="card-body">
-            <i class="fas fa-calendar-check fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">Presensi</h6>
+            <i class="fa fa-shopping-cart fa-2x mb-2"></i>
+            <h6 class="font-weight-bold">Transaksi Penjualan</h6>
           </div>
         </a>
       </div>
     </div>
-     <!-- Presensi Menu -->
-     <!-- <div class="col-xl-2 col-md-4 col-sm-6 mb-1">
-      <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #667eea, #38ef7d);">
-        <a href="<?php echo base_url().'c_presensi/'; ?>" class="text-decoration-none text-white">
-          <div class="card-body">
-            <i class="fas fa-calculator fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">Hitung Presensi</h6>
-          </div>
-        </a>
-      </div>
-    </div> -->
-    <!-- Payroll Menu -->
-    <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
-      <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #667eea, #764ba2);">
-        <a href="<?php echo base_url().'c_payroll/'; ?>" class="text-decoration-none text-white">
-          <div class="card-body">
-            <i class="fas fa-university fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">Payroll</h6>
-          </div>
-        </a>
-      </div>
-    </div>
+   
 
-     <!-- Resign Menu -->
-     <div class="col-xl-2 col-md-4 col-sm-6 mb-1">
-      <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #ff0000, #ff69b4);" >
-        <a href="<?php echo base_url().'c_resign/'; ?>" class="text-decoration-none text-white">
-          <div class="card-body">
-            <i class="fas fa-users fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">Karyawan Resign</h6>
-          </div>
-        </a>
-      </div>
-    </div>
-    <!-- Cuti Menu -->
-    <div class="col-xl-2 col-md-4 col-sm-6 mb-1">
-      <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #f2994a, #f2c94c);">
-        <a href="<?php echo base_url().'c_cuti/'; ?>" class="text-decoration-none text-white">
-          <div class="card-body">
-            <i class="fas fa-suitcase fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">Cuti</h6>
-          </div>
-        </a>
-      </div>
-    </div>
-     <!-- User Menu -->
-     <div class="col-xl-2 col-md-4 col-sm-6 mb-1">
-      <div class="card shadow h-100 py-3 card-hover" style="background: linear-gradient(45deg, #bdc3c7, #2c3e50);" >
-        <a href="<?php echo base_url().'c_user_manage/'; ?>" class="text-decoration-none text-white">
-          <div class="card-body">
-            <i class="fas fa-cog fa-2x mb-2"></i>
-            <h6 class="font-weight-bold">User Setting</h6>
-          </div>
-        </a>
-      </div>
-    </div>
-    <!-- End Content Row -->
-</div>
-<!-- /.container-fluid -->
-<!-- end of content-->
 
-<div class="row justify-content-center text-center mt-4">
-  <!-- First Chart: Total Karyawan Berdasarkan Departemen -->
-  <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-    <div class="card shadow h-100 py-3 card-hover chart-card">
-      <div class="card-body">
-        <h6 class="font-weight-bold text-dark">Total Karyawan Berdasarkan Departemen</h6>
-        <canvas id="departmentChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <!-- Second Chart: Total Karyawan Resign -->
-  <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-    <div class="card shadow h-100 py-3 card-hover chart-card">
-      <div class="card-body">
-        <h6 class="font-weight-bold text-dark">Total Karyawan Resign Berdasarkan Departemen</h6>
-        <canvas id="resignChart"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  // First Chart: Total Karyawan Berdasarkan Departemen
-  const departmentData = {
-    labels: [<?php 
-            foreach($get_karyawan_group_dept as $r) {
-                echo "'" . $r->nm_dept . "',";
-            }
-        ?>],
-    datasets: [{
-      label: 'Jumlah Karyawan',
-      data: [<?php 
-            foreach($get_karyawan_group_dept as $r) {
-                echo "'" . $r->jumlah . "',";
-            }
-        ?>],
-      backgroundColor: ['#ff9f40', '#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
-      borderColor: ['#ff7f31', '#ff5071', '#2f8bcd', '#ffd45a', '#33a9a9'],
-      borderWidth: 1
-    }]
-  };
-
-  // Second Chart: Total Karyawan Resign
-  const resignData = {
-    labels: [<?php 
-            foreach($get_karyawan_group_dept as $r) {
-                echo "'" . $r->nm_dept . "',";
-            }
-        ?>],
-    datasets: [{
-      label: 'Jumlah Resign',
-      data: [<?php 
-            foreach($get_karyawan_resign_dept as $r) {
-                echo "'" . $r->jumlah . "',";
-            }
-        ?>],
-      backgroundColor: ['#ff9f40', '#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
-      borderColor: ['#ff7f31', '#ff5071', '#2f8bcd', '#ffd45a', '#33a9a9'],
-      borderWidth: 1
-    }]
-  };
-
-  // Create the first chart
-  window.onload = function() {
-    const departmentCtx = document.getElementById('departmentChart').getContext('2d');
-    new Chart(departmentCtx, {
-      type: 'bar',
-      data: departmentData,
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          tooltip: {
-            callbacks: {
-              label: function(tooltipItem) {
-                return tooltipItem.label + ': ' + tooltipItem.raw + ' karyawan';
-              }
-            }
-          }
-        }
-      }
-    });
-
-    // Create the second chart
-    const resignCtx = document.getElementById('resignChart').getContext('2d');
-    new Chart(resignCtx, {
-      type: 'bar',
-      data: resignData,
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          tooltip: {
-            callbacks: {
-              label: function(tooltipItem) {
-                return tooltipItem.label + ': ' + tooltipItem.raw + ' resign';
-              }
-            }
-          }
-        }
-      }
-    });
-  };
-</script>
 
 
 <!-- CSS for Centering Cards and Custom Layout -->

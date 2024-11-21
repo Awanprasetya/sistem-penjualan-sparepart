@@ -105,9 +105,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </script>
   <?php endif; ?>
   
-    <form class="form-signin" method="post" action="<?php echo site_url('Login/masuk'); ?>">
+    <form class="form-signin" method="post" action="<?php echo site_url('Login/authenticate'); ?>">
         <div class="text-center mb-4">
-            <img class="mb-4" src="<?php echo base_url('assets/foto/logo2.png'); ?>" alt="Logo" >
+            
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
         </div>
 
@@ -122,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted text-center">HRMS - PT. Arkanindoplast Utama 2024 <br>&copy; Kurniawan</p>
+        <p class="mt-5 mb-3 text-muted text-center">Sistem Penjualan - PT. Awan Sparepart 2024 <br>&copy; Kurniawan</p>
     </form>
 </body>
 </html>

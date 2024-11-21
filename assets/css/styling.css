@@ -1,0 +1,86 @@
+
+  /* Gradient background untuk tabel */
+  #example {
+    background: linear-gradient(to right, #4e73df, #2e59d9); /* Gradient biru */
+    color: white;
+  }
+  #example thead {
+    background: linear-gradient(to right, #4e73df, #2e59d9); /* Warna header tabel */
+  }
+  #example tbody tr {
+    background: rgba(255, 255, 255, 0.1); /* Efek transparan untuk baris tabel */
+  }
+  #example tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2); /* Efek hover saat baris disorot */
+  }
+
+  /* Ubah warna teks untuk tabel */
+  #example th, #example td {
+    color: white; /* Menjaga warna teks putih */
+  }
+  #example td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Border bawah baris tabel */
+  }
+   /* Mengubah ukuran tombol pada tabel */
+   #example .btn {
+    padding: 10px 20px; /* Mengubah ukuran tombol */
+    font-size: 14px; /* Mengatur ukuran teks dalam tombol */
+    border-radius: 25px; /* Membuat tombol berbentuk rounded */
+  }
+
+  /* Menambahkan padding lebih pada tombol action */
+  #example .btn-sm {
+    padding: 8px 15px; /* Ukuran tombol kecil */
+    font-size: 13px; /* Ukuran font lebih kecil */
+    border-radius: 25px; /* Menjaga bentuk rounded */
+  }
+
+  /* Menambahkan efek hover pada tombol */
+  #example .btn:hover {
+    opacity: 0.9; /* Efek transparansi saat tombol dihover */
+    transition: 0.3s; /* Animasi halus saat hover */
+  }
+
+  /* Mengatur warna tombol untuk aksi */
+  #example .btn-primary {
+    background-color:mediumseagreen;
+    border-color: #4e73df;
+  }
+  #example .btn-warning {
+    background-color: #f6c23e;
+    border-color: #f6c23e;
+  }
+  #example .btn-danger {
+    background-color: #e74a3b;
+    border-color: #e74a3b;
+  }
+
+  /* Menjaga agar tombol tetap konsisten saat loading atau disabled */
+  #example .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  #loading {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .spinner {
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }

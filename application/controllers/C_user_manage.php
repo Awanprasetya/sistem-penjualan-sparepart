@@ -17,7 +17,7 @@ class C_user_manage extends CI_Controller{
 	}
     function index(){
         $data['title'] = "DATA USER";
-        $data['get_user'] = $this->Master_data->get_data('v_user_login')->result();
+        $data['get_user'] = $this->Master_data->get_data('user')->result();
         $data['get_karyawan'] = $this->Master_data->get_karyawan_order_asc();
         $this->load->view('__header');
         $this->load->view('SuperAdmin/master-data/data-user-manage/v_user',$data);

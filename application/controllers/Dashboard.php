@@ -15,13 +15,9 @@ class Dashboard extends CI_Controller{
 		$this->load->view('__header');
 		if ($this->session->userdata('role') == "SuperAdmin") 
 		{
-			$data['get_karyawan_group_dept']= $this->Master_data->get_karyawan_group_dept();
-			$data['get_karyawan_resign_dept']= $this->Master_data->get_karyawan_resign_dept();
-			$this->load->view('dashboard_sa',$data);
+			$this->load->view('dashboard_sa');
 		} else if ($this->session->userdata('role') == "Admin") {
-			$data['get_karyawan_group_dept']= $this->Master_data->get_karyawan_group_dept();
-			$data['get_karyawan_resign_dept']= $this->Master_data->get_karyawan_resign_dept();
-			$this->load->view('dashboard_a',$data);
+			$this->load->view('dashboard_a');
 		}else{
 			$this->load->view('dashboard_k');
 		}
